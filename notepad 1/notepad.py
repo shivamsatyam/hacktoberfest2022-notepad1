@@ -304,30 +304,7 @@ file.add_command(label='Save As', image=new_icon, compound=tk.LEFT, accelerator=
 
 ## exit functionality 
 
-def exit_func(event=None):
-    global url, text_changed
-    try:
-        if text_changed:
-            mbox = messagebox.askyesnocancel('Warning', 'Do you want to save the file ?')
-            if mbox is True:
-                if url:
-                    content = text_editor.get(1.0, tk.END)
-                    with open(url, 'w', encoding='utf-8') as fw:
-                        fw.write(content)
-                        main_application.destroy()
-                else:
-                    content2 = str(text_editor.get(1.0, tk.END))
-                    url = filedialog.asksaveasfile(mode = 'w', defaultextension='.txt', filetypes=(('Text File', '*.txt'), ('All files', '*.*')))
-                    url.write(content2)
-                    url.close()
-                    main_application.destroy()
-            elif mbox is False:
-                main_application.destroy()
-        else:
-            main_application.destroy()
-    except:
-        return 
-file.add_command(label='Exit', image=exit_icon, compound=tk.LEFT, accelerator='Ctrl+Q', command=exit_func)
+
 
 ############ find functionality
 
